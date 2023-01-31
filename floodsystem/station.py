@@ -29,6 +29,15 @@ class MonitoringStation:
 
         self.latest_level = None
 
+    def typical_range_consistent(self):
+        range=self.typical_range
+        if range==None:
+            return False
+        elif range[1]>=range[0]:
+            return True
+        else:
+            return False
+
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
         d += "   id:            {}\n".format(self.station_id)
@@ -38,3 +47,11 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+def inconsistent_typical_range_stations(stations):
+    d=[]
+    for i in range(len(stations)):
+        p1=stations[i]
+        if MonitoringStation.typical_range_consistent(p1)==False:
+            d.append(p1.name)
+    return d
