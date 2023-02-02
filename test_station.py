@@ -26,3 +26,8 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
     assert MonitoringStation.typical_range_consistent(s) == True
+    s.typical_range=None
+    assert MonitoringStation.typical_range_consistent(s)==False
+
+    if __name__=="__main__":
+        test_create_monitoring_station()
