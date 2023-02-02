@@ -7,13 +7,11 @@ geographical data.
 """
 
 from .utils import sorted_by_key  # noqa
-from .stationdata import build_station_list
 import numpy as np
 import math
 from haversine import haversine
 from .utils import sorted_by_key
 
-stations=build_station_list()
 
 def stations_by_distance(stations, p, town=False):
     d=[]
