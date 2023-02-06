@@ -35,4 +35,39 @@ def stations_within_radius(stations, centre, r):
             break
     return d
 
+def rivers_with_station(stations):
+    """Returns a set containing a list of all the rivers in the data set with a monitoring station."""
+    d = []
+    for i in range(len(stations)):
+        d.append(stations[i].river)
+    return set(sorted(d))
 
+
+def stations_by_river(stations):
+    """Returns a dictionary which maps river names(key) to all the stations which monitor it."""
+    a = {}
+    for i in range(0, len(stations)):
+        a.setdefault(stations[i].river, []).append(stations[i].name)
+    return a
+
+
+def rivers_by_station_number(stations, N):
+    """Returns a list of tuples which include river name and number of monitoring stations, sorted in descending order by the number of stations. 
+    Input N governs number of rivers shown. In the case that there are more rivers with the same number of stations as the N th entry, these rivers are included in the list"""
+    tuples_list = []
+    a = stations_by_river(stations)
+    for i in range(0, len(stations)):
+        b = stations[i].river
+        c = (b, len(list(a[b])))
+        tuples_list.append(c)
+    t = sorted(list(set(tuples_list)))
+    t.sort(key=lambda a: a[1], reverse = True)
+    p = []
+    for i in range (0, N):
+        p.append(t[i])
+    while t[i+1][1] == t[i][1]:
+        p.append(t[i+1])
+        i += 1
+        if i > len(t) - 2:
+            break
+    return p
