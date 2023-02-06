@@ -17,7 +17,36 @@ def test_stations_within_radius():
     assert floodsystem.geo.stations_within_radius(list, (0,0), 100)==[]
     assert floodsystem.geo.stations_within_radius(list, (0,0), 200)==[c.name, a.name]
     assert floodsystem.geo.stations_within_radius(list, (0,0), 1000)==[c.name, a.name, b.name]
+    
+    def test_rivers_with_station():
+    a = MonitoringStation("N/A", "N/A", "Station A", "N/A", None, "River A", "N/A")
+    b = MonitoringStation("N/A", "N/A", "Station B", "N/A", None, "River B", "N/A")
+    c = MonitoringStation("N/A", "N/A", "Station C", "N/A", None, "River C", "N/A")
+    list=[a, b, c]
+    assert floodsystem.geo.rivers_with_station(list)=={a.river, b.river, c.river}
+
+def test_stations_by_river():
+    a = MonitoringStation("N/A", "N/A", "Station A", "N/A", None, "River A", "N/A")
+    b = MonitoringStation("N/A", "N/A", "Station B", "N/A", None, "River B", "N/A")
+    c = MonitoringStation("N/A", "N/A", "Station C", "N/A", None, "River C", "N/A")
+    d = MonitoringStation("N/A", "N/A", "Station D", "N/A", None, "River C", "N/A")
+    list=[a, b, c, d]
+    assert floodsystem.geo.stations_by_river(list)=={a.river: ["Station A"], b.river: ["Station B"], c.river: ["Station C", "Station D"]}
+
+def test_rivers_by_station_number():
+    a = MonitoringStation("N/A", "N/A", "Station A", "N/A", None, "River A", "N/A")
+    b = MonitoringStation("N/A", "N/A", "Station B", "N/A", None, "River B", "N/A")
+    c = MonitoringStation("N/A", "N/A", "Station C", "N/A", None, "River C", "N/A")
+    d = MonitoringStation("N/A", "N/A", "Station D", "N/A", None, "River C", "N/A")
+    list=[a, b, c, d]
+    assert floodsystem.geo.rivers_by_station_number(list, 2)==[(c.river, 2), (a.river, 1), (b.river, 1)]
+    assert floodsystem.geo.rivers_by_station_number(list, 1)==[(c.river, 2)]
+    
+    
 
 if __name__=="__main__":
     test_stations_by_distance()
     test_stations_within_radius()
+    test_rivers_with_station()
+    test_stations_by_river()
+    test_rivers_by_station_number()
