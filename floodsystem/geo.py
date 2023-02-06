@@ -14,6 +14,7 @@ from .utils import sorted_by_key
 
 
 def stations_by_distance(stations, p, town=False):
+    """Returns a list of tuples, including stations and their distances from the coordinate p."""
     d=[]
     for i in range(len(stations)):
         p1=stations[i]
@@ -25,6 +26,7 @@ def stations_by_distance(stations, p, town=False):
     return d
 
 def stations_within_radius(stations, centre, r):
+    """Returns a sorted list of all stations within a radius from a coordinate r."""
     sorted=sorted_by_key(stations_by_distance(stations, centre), 1)
     d=[]
     for i in range(len(sorted)):

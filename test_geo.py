@@ -18,7 +18,7 @@ def test_stations_within_radius():
     assert floodsystem.geo.stations_within_radius(list, (0,0), 200)==[c.name, a.name]
     assert floodsystem.geo.stations_within_radius(list, (0,0), 1000)==[c.name, a.name, b.name]
     
-    def test_rivers_with_station():
+def test_rivers_with_station():
     a = MonitoringStation("N/A", "N/A", "Station A", "N/A", None, "River A", "N/A")
     b = MonitoringStation("N/A", "N/A", "Station B", "N/A", None, "River B", "N/A")
     c = MonitoringStation("N/A", "N/A", "Station C", "N/A", None, "River C", "N/A")
