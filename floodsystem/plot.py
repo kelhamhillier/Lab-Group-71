@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as dates
 from datetime import datetime, timedelta
 from .analysis import polyfit
+import numpy as np
 
 def plot_water_levels(station, dates, levels):
     t = []
