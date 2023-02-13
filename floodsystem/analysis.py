@@ -2,7 +2,10 @@ import matplotlib.dates as plt
 import numpy as np
 
 def polyfit(dates, levels, p):
-    x = plt.date2num(dates)
+    if type(dates[50]) == "datetime.datetime":
+        x = plt.date2num(dates)
+    else:
+        x = dates
     # Find coefficients of best-fit polynomial f(x) of degree p
     p_coeff = np.polyfit(x - x[0], levels, p)
 
