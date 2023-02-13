@@ -4,8 +4,9 @@ from floodsystem.datafetcher import fetch_measure_levels
 import datetime
 
 stations=build_station_list()
-station=stations[123]
+station=stations[122]
 dt=2
 dates, levels = fetch_measure_levels(
         station.measure_id, dt=datetime.timedelta(days=dt))
 plot_water_levels(station, dates, levels)
+plot_water_level_with_fit(station, dates, levels, 4)
