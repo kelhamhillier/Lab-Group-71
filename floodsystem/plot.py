@@ -5,6 +5,7 @@ from .analysis import polyfit
 import numpy as np
 
 def plot_water_levels(station, dates, levels):
+    """Plots water levels of a given station over a given timeframe."""
     plt.plot(dates, levels)
 
     # Add axis labels, rotate date labels and add plot title
@@ -19,6 +20,7 @@ def plot_water_levels(station, dates, levels):
     plt.show()
 
 def plot_water_level_with_fit(station, dates, levels, p, range=False):
+    """Plots the water level of a given station in a given timeframe, with a polynomial approximation of order p"""
     x=date.date2num(dates)
     length=len(x)
     # Plot polynomial fit at 30 points along interval (note that polynomial
