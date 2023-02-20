@@ -6,7 +6,7 @@ import datetime
 
 def run():
     stations=build_station_list()
-    five_s=stations_highest_rel_level(stations, 5, values=False)
+    five_s=stations_highest_rel_level(stations, 5)
     dt=2
     for i in range(5):
         next_stat=five_s[i]
