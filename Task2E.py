@@ -2,6 +2,7 @@ from floodsystem.plot import plot_water_levels
 from floodsystem.stationdata import build_station_list
 from floodsystem.flood import stations_highest_rel_level
 from floodsystem.datafetcher import fetch_measure_levels
+import datetime
 
 def run():
     stations=build_station_list()
