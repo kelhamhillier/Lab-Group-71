@@ -14,7 +14,6 @@ def run():
         for station in stations:
             if station.name==next_stat[0]:
                 next_stat=station
-                print(station)
                 dates, levels=fetch_measure_levels(next_stat.measure_id, dt=datetime.timedelta(days=dt))
                 plot_water_level_with_fit(next_stat, dates, levels, 4)
                 break
