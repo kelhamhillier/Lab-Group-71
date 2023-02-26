@@ -8,9 +8,9 @@ def run():
     stations=build_station_list()
     update_water_levels(stations)
     five_s=stations_highest_rel_level(stations, 5)
-    dt=10
     for i in range(5):
         next_stat=five_s[i]
+        dt=10
         for station in stations:
             if station.name==next_stat[0]:
                 next_stat=station
