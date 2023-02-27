@@ -8,8 +8,7 @@ def run():
     update_water_levels(stations)
 
     for i in (stations_level_over_threshold(stations, 0.8)):
-        print(i)
-
+        print(i[0].name, i[1])
 if __name__ == "__main__":
     print("*** Task 2A: CUED Part IA Flood Warning System ***")
     run()
