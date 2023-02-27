@@ -65,7 +65,7 @@ def warning(stations):
     moderate_risk = []
     low_risk = []
     for j in range(0, len(c)):
-        if b[j].relative_water_level() > 1.2 and c[j][1] == "grad_+2" or "grad_+1":
+        if b[j].relative_water_level() > 1.2 and c[j][1] == "grad_+2" or "grad_+1" or "grad_0":
             severe_risk.append(b[j].town)
         elif b[j] > 1.2 or c[j][1] == "grad_+2":
             high_risk.append(b[j].town)
